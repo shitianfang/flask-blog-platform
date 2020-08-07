@@ -1,0 +1,30 @@
+{% for c,message in get_flashed_messages(with_categories=true) %}
+        {% if c =="success" %}
+        <div class="alert alert-success">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+        
+        {% if c =="notice" %}
+        <div class="alert alert-info">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+
+        {% if c =="error" %}
+        <div class="alert alert-danger">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+
+        {% if c =="message" %}
+        <div class="alert alert-warning">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>    
+        {% endif %}
+        
+    {% endfor %}

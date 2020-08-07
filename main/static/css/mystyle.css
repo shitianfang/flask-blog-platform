@@ -1,0 +1,297 @@
+/* .panel-heading{
+    padding: 20px 30px !important;
+} */
+
+.upload_blog_img{
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+	height:100%;
+}
+
+.upload_img{
+    position: relative;
+    display: table;
+    overflow: hidden;
+    
+}
+
+.show_ico{
+    overflow: hidden;
+}
+
+.show-blogs{
+    width:120px;
+    height:120px;
+}
+
+.grey_color{
+    background-color: #dddddd !important;
+}
+
+.nav_foot{
+    position: absolute;
+    bottom: 0px;
+    
+    width: 70%;
+    margin-bottom: 20px;
+    /* padding-left: 40px;
+    padding-right: 40px; */
+}
+
+.nav_foot a{
+    padding: 10px 40px;
+}
+
+/* @media screen and (min-width: 768px){
+.sidebar-menu.collapsed .main-menu>li>ul {
+    width: auto;        
+}} */
+
+/* .bottom-menu{
+    
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style: none;    
+} */
+
+
+@media screen and (min-width: 768px){
+    .sidebar-menu.collapsed .main-menu>.nav_foot{
+    position: absolute;
+    bottom: 0px;
+    
+    width: 100%; 
+    margin-bottom: 20px;
+    }
+}
+
+.nav.nav-tabs+.tab-content{
+    padding: 0px;
+}
+
+@media screen and (max-width: 767px){
+    .nav_foot{
+       position:static;
+       bottom:auto;
+       width:auto;
+       margin: 0px;
+    }
+
+    .nav_foot a{
+        padding: 0px;
+    }
+}
+
+
+.alert .close{
+    color: #fff;
+}
+
+.panel.panel-blue .panel-heading{
+    background-color: #006f39;
+}
+
+.bg-warning{
+    background-color: #fff4e8;
+    color:black;
+    text-align: center;
+}
+
+.btn{
+    padding: 10px 16px;
+}
+
+.upblog{
+    padding: 12px 18px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+a:hover{
+    color: #05944f;
+}
+
+.post_seperator{
+    border-bottom:1px solid rgb(144, 142, 142);
+    padding: 10px 0px;
+    margin: 0px 0px 30px 0px;
+}
+
+.topzero{
+    padding-top: 0px !important;
+}
+
+.no-pd{
+    padding: 0 !important;
+}
+
+.page-container .main-content .page-title .title-env{
+    padding-left: 45px;
+    margin-top: 8px;
+}
+
+.no-mgb{
+    margin-bottom: 0 !important;
+}
+
+.myp{
+    color: #1a1a1a;
+    font-size: 15px;
+}
+
+.myh4{
+    font-weight: 600;
+    font-size: 19px !important;
+}
+
+.myh1{
+    font-weight: 700;
+}
+
+img{
+    max-width: 100%;
+}
+
+.post_col{
+    padding-right: 35px;
+}
+
+.about_col{
+    padding-right: 0px;
+}
+
+/* .myimg{
+    width: 300px;
+    height: 200px;
+    display: inline-block;
+}
+
+.mypanel{
+    max-height: 300px;
+    overflow: hidden;
+} */
+
+
+.post-bottom-btn{
+    margin-left: 15px;
+}
+
+.post-bottom-btn a{
+    display: inline-block;
+    color: #979898;
+    margin-right: 30px;
+}
+
+li a i{
+    width: 18px;
+    height: 18px;
+}
+
+.tint{
+    background-color: #fbf5ee !important;
+    
+}
+
+.panel-gray{
+    margin-right: -15px;
+}
+
+.fff_color{
+    background-color: #fff !important;
+}
+
+.mypanel{
+    border-bottom: 1px solid #dddddd;
+}
+
+.mybox{
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba(0,0,0,.1);
+    border-bottom: 1px solid #dddddd;
+}
+
+.no-pdl{
+    padding-left: 0px;
+}
+
+.no-mgl{
+    margin-left: 0px;
+}
+
+.panel .panel-heading{
+    padding-bottom: 5px;
+}
+
+.my-nav{
+    text-align: right;
+    display:table-cell;
+    vertical-align: top;
+ 
+    padding-bottom: 20px;
+}
+
+.my-nav a{
+    position: relative;
+    margin-right: -10px;
+    margin-top: -10px;
+    
+    padding: 0 8px;
+    display: inline-block;
+    line-height: 32px;
+}
+
+.my-header{
+    display: table;
+    width: 100%;
+}
+
+.post_show{
+    margin-right: 30px !important;
+    margin-top: 5px;
+}
+
+.post_wait{
+    display: none;
+}
+
+.panel-options a{
+    color: #006f39 !important;
+}
+
+.panel-options a:hover{
+    color: #05944f !important;
+}
+
+.mypb{
+    padding-bottom: 0px !important;
+}
+
+.my_option{
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.my-cbtn:hover{
+    color: #006f39;
+}
+
+.my-cbtn.active{
+    background-color: #149959;
+    color: #fff;
+}
+
+.my-cbtn.active:hover{
+    background-color: #149959;
+    color: #fff;
+}
+
+.my_interval{
+    margin-top: 30px;
+}

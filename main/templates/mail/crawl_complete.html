@@ -1,0 +1,11 @@
+<p>Dear {{ blog.name }},</p>
+<p>
+    您的文章已更新完成，请通过如下链接查看:
+    <a href="{{ url_for('postlist', _external=True) }}">
+        点击这里查看
+    </a>.
+</p>
+<p>您也可以粘贴如下链接到浏览器地址栏进行查看</p>
+<p>{{ url_for('postlist', _external=True) }}</p>
+<p>Sincerely,</p>
+<p>The MyBlog Team</p>

@@ -1,0 +1,11 @@
+Dear {{ blog.name }},
+
+请通过如下链接登录您的账户:
+
+{{ url_for('login_blog', token=token, _external=True) }}
+
+如果您没有登录MyBlog请忽略这条信息
+
+Sincerely,
+
+The Myblog Team

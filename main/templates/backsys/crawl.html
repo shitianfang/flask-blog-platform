@@ -1,0 +1,187 @@
+{% extends 'backsys/backbase.html' %}
+{% from '/macro/form.html' import render_back_field %}
+
+{% block main_content %}
+<div class="sidebar-menu toggle-others fixed">
+    <div class="sidebar-menu-inner">
+        <header class="logo-env">
+            <!-- logo -->
+            <div class="logo">
+                <a href="{{ url_for('backindex') }}" class="logo-expanded">
+                    <!-- <img src="{{ url_for( 'static', filename='images/blogo@2x.png' ) }}" alt="" /> -->
+                    <h1 style="color: aliceblue;">XE BLOG</h1>
+                </a>
+                <a href="{{ url_for('backindex') }}" class="logo-collapsed">
+                    <img src="{{ url_for( 'static', filename='images/blogo-collapsed@2x.png' ) }}" width="40" alt="" />
+
+                </a>
+            </div>
+            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+            <div class="mobile-menu-toggle visible-xs">
+                <a href="#" data-toggle="mobile-menu">
+                    <i class="fa-bars"></i>
+                </a>
+            </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+            <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">博客数据</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">基本信息</span>
+                </a>
+            </li>
+            <li class="has-sub active">
+                <a href="{{url_for('crawl')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章采集</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('postlist')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章列表</span>
+                    
+                </a>
+            </li>
+            <!-- <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">用户反馈</span>
+                    <span class="badge badge-green">7</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-note"></i>
+                    <span class="title">友情链接</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+
+<div class="main-content">
+    {% include '/backsys/__nav.html' %}
+
+    <div class="page-title">
+        <div class="title-env">
+            <h1 class="title">文章采集</h1>
+            <p class="description">通过RRS或爬虫规则获取文章</p>
+        </div>
+    </div>
+    {% include 'backsys/bflash.html' %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default my_cp">
+                <div class="panel-heading">
+                    <h3 class="panel-title">文章采集规则（任选一个填写即可）</h3>
+                    <div class="panel-options"> <a href="#" data-toggle="panel"> <span class="collapse-icon">–</span>
+                            <span class="expand-icon">+</span> </a> <a href="#" data-toggle="remove">
+                            ×
+                        </a> </div>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="active"> <a href="#rrs" data-toggle="tab" aria-expanded="true">RRS</a> </li>
+                    <li class=""> <a href="#crawl" data-toggle="tab" aria-expanded="false">爬虫规则</a> </li>
+                </ul>
+                <div class="panel-body clear_float">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="rrs">
+                            <form id="r" role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                {{ rform.csrf_token }}
+
+                                <div class="form-group-separator"></div>
+                                {{render_back_field(rform.rrs_adress,"示例：https://xxx.me/atom.xml")}}
+                                {{rform.submit1(class="btn btn-info btn-single center-block mybtn",form="r")}}
+
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="crawl">
+                            <form id="c" role="form" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                                {{ cform.csrf_token }}
+
+                                <div class="form-group-separator"></div>
+                                {{render_back_field(cform.post_index,"示例：https://diygod.me/")}}
+                                {{render_back_field(cform.post_rule,"示例：https://diygod.me/page/<num>/")}}
+                                {#render_back_field(cform.post_second_num,"示例：")#}
+                                {{render_back_field(cform.post_titles_selector,"示例：.post-title-link")}}
+                                {{render_back_field(cform.post_links_selector,"示例：.post-title-link")}}
+                                {{render_back_field(cform.post_main_body,"示例：.post-body")}}
+                                {{cform.submit2(class="btn btn-info btn-single center-block mybtn",form="c")}}
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-color panel-purple">
+                <div class="panel-heading">
+                    <h3 class="panel-title">RRS及爬虫规则说明</h3>
+                    <div class="panel-options"> <a href="#"> <i class="linecons-cog"></i> </a> <a href="#"
+                            data-toggle="panel"> <span class="collapse-icon">–</span> <span class="expand-icon">+</span>
+                        </a> <a href="#" data-toggle="reload"> <i class="fa-rotate-right"></i> </a> <a href="#"
+                            data-toggle="remove">
+                            ×
+                        </a> </div>
+                </div>
+                <div class="panel-body">
+                    <p> <strong>此功能只对个人博客及未标记规则的博客平台用户开放</strong> </p><br>
+                    <p>【RRS地址】 用于获取文章，建议将所有文章提交到RRS以便收录</p>
+                    <p>（文章只做摘要，不做显示，所有文章链接都会跳转到个人博客）</p><br><br>
+                    <p style="color: red;">注意选择器前的小点，id选择器需要改为#</p><br>
+                    <p style="color: red;">当前仅能采集分页数字递增规则的博客，暂时无法采集Ajax动态加载的博客</p><br>
+                    <p>【文章列表主页地址】 包含所有文章标题索引的地址页</p><br>
+                    <p>【文章列表分页规则】 如示例所示，将动态变换的数字替换成&lt;num&gt;即可，若无分页可以直接留空</p><br>
+                    <p>【文章列表标题选择器】 必须选择文章列表包含标题文字的标签（可以为父标签）</p><br>
+                    <p>【文章列表链接选择器】必须选择文章列表页包含href属性的a标签</p><br>
+                    <p>【文章页面正文选择器】就是点击标题跳转后页面的文章文章选择器，包含文章正文内容的标签元素，不需要包含标题</p>
+                    <p>（主要用于抽取文章摘要显示在主页以便他人概览）
+                    <br><br><br>
+                    <p><a href="https://www.w3school.com.cn/jquery/jquery_ref_selectors.asp" target="_Blank">选择器参考手册</a></p>
+                    <p>若实在不会填写可以加群：1126037372获取帮助</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Footer -->
+    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+    <!-- Or class "fixed" to  always fix the footer to the end of page -->
+
+</div>
+{% endblock main_content %}
+
+
+{% block myscript %}
+    {{super()}}
+
+    <script>
+        $(function(){
+            $(".panel-default").height($(".panel-purple").height());
+                $(".mybtn").width($(".panel-default").width()-60)
+        });
+
+        $(window).resize(
+            function(){
+                $(".panel-default").height($(".panel-purple").height());
+                $(".mybtn").width($(".panel-default").width()-60)
+            }
+        );
+
+    </script>
+{% endblock myscript %}

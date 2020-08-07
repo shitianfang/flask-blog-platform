@@ -1,0 +1,170 @@
+{% from '/macro/form.html' import render_field %}
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - 博客提交{% endblock %}
+
+{% block color %}
+    grey_color
+{% endblock color %}
+
+{% block content %}
+
+
+
+<div id="content" class="container my-4 my-md-5">
+    <div class="panel panel-primary">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">博客提交</h3>
+        </div>
+           
+        <div class="panel-body">
+
+            <!-- <div class="my_text" style="margin-top: 5px; margin-bottom:15px ; color:red">
+                    
+                <h5>带星号为必填部分，不带星号可以省略</h5>
+            </div>  -->
+
+            <form role="form" method="post" enctype="multipart/form-data"> 
+                
+                {{ form.csrf_token }}
+
+                <ul id="myTab" class="nav nav-tabs" style="display: none;">
+                    <li class="active">
+                        <a href="#blog" data-toggle="tab">博客填写</a>
+                    </li>
+                    <li><a href="#post" data-toggle="tab">文章填写</a></li>
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="blog">
+                        <div class="my-2">
+                            {{form.logo.label(class='control-label')}}
+                            <!-- <input type="hidden" value="" id="tougao_sites_ico" class="tougao-sites" name="tougao_sites_ico"> -->
+                            <div class="upload_img">
+                                <div class="show_ico">
+                                    <img id="show_blogs_ico" class="show-blogs" src="/static/images/add.png" alt="博客图标" style="background-color: #d2d2d2;">
+                                    <!-- <i id="remove_sites_ico" class="iconfont icon-close-circle remove-ico remove-sites" data-id="" data-type="ico" style="display: none;"></i> -->
+                                </div>
+                                <!-- <input type="file" id="upload_sites_ico" class="upload_blog_img" data-type="ico" accept="image/*" onchange="uploadImg(this)">-->
+                                {{ form.logo(class='form-control upload_blog_img',id='up_img',onchange="changepic(this)")|safe }}
+                            </div>
+                            {% if form.logo.errors %}
+                                <ul class=errors>
+                                {% for error in form.logo.errors %}
+                                  <li>{{ error }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            {{render_field(form.name)}}
+                        </div>
+                        
+                        <div class="form-group">
+                            {{ render_field(form.url) }}
+                        </div>
+                        
+                        <div class="form-group">
+                            {{ render_field(form.categor) }}
+                        </div>   
+        
+                        <div class="form-group">
+                            {{ render_field(form.email) }}
+                        </div>
+        
+                        <div class="form-group">
+                            {{ render_field(form.about) }}
+                        </div>
+        
+                        <div class="form-group">
+                            {{ render_field(form.keyword) }}
+                        </div>
+                        
+                        <div>
+                            <a href="#post" onclick="intopost()" id="into_post" title="不会丢失当前填写内容，不填只会收录博客"><span class="glyphicon glyphicon-import"></span>点击填写文章收录规则</a>    
+                        </div>
+                        
+                        <div class="my_text" style="margin-top: 20px; margin-bottom:15px ; color:red">
+                            <h5>注意：提交后可以自动添加到本站收录，并且网站会自动帮您提交到各大博客收录平台及搜索引擎</h5>
+                        </div>                           
+                        <button type="submit" class="btn btn-primary">提交博客</button>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="post">
+                        <div>
+                            <a href="#blog" onclick="intoblog()"><span class="glyphicon glyphicon-arrow-left"></span>返回博客提交</a>
+                        </div>
+                        <div class="my_text" style="margin-top: 20px; margin-bottom:15px ; color:red">
+                            <h5>注意：RRS 和 文章采集规则 任选一类填写即可，多填则按RRS处理，采集只会在晚上空闲时进行，不会干扰博客正常运营</h5>
+                        </div>   
+                        
+                        <div class="parameters" style="width: 40%; padding-right: 15px;">
+                            <div class="form-group">
+                                {{ render_field(form.rrs) }}
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                {{ render_field(form.post_index) }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.post_rule) }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.post_second_num) }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.post_titles_selector) }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.post_links_selector) }}
+                            </div>
+                            <div class="form-group">
+                                {{ render_field(form.post_main_body) }}
+                            </div>
+                        </div>
+                        <div class="test" style="width:60%;padding-left: 15px;overflow:scroll">
+
+                        </div>
+
+                        <div>
+                            <button class="btn btn-info" onclick="test_title()">测试标题提取</button>
+                            <button class="btn btn-info" onclick="test_post()">测试文章提取</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block bottomscript %}
+{{ super() }}
+
+<script type="text/javascript">
+    function intopost(){
+        $("#myTab li:eq(1) a").tab('show');
+        $("panel-title").text("文章采集");
+    }
+
+    function intoblog(){
+        $("#myTab li:eq(0) a").tab('show');
+        $("panel-title").text("博客提交");
+        if ($("#post_index").val() || $("#rrs").val()){
+            $("#into_post").text("点击填写文章收录规则（已填写）");
+        }else{
+            $("#into_post").text("点击填写文章收录规则");
+        }        
+    }
+
+    function test_title(){
+        
+    }
+</script>
+    
+{% endblock bottomscript %}
+

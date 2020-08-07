@@ -1,0 +1,95 @@
+{% from '/macro/form.html' import render_field %}
+{% extends 'base.html' %}
+
+{% block title %}MyBlog - 博客提交{% endblock %}
+
+{% block color %}
+    grey_color
+{% endblock color %}
+
+{% block content %}
+
+<div id="content" class="container my-4 my-md-5">
+
+    
+
+    <div class="panel panel-color panel-blue">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">博客提交</h3>
+        </div>
+           
+        <div class="panel-body">
+            <p class="bg-warning">提交后可以在<a>后台配置面板</a>解锁更多功能</p>
+            <br>
+
+            <form role="form" method="post" enctype="multipart/form-data"> 
+                
+                {{ form.csrf_token }}
+                <div class="form-group-separator"></div>
+                <div class="my-2">
+                    {{form.logo.label(class='control-label')}}
+                    <!-- <input type="hidden" value="" id="tougao_sites_ico" class="tougao-sites" name="tougao_sites_ico"> -->
+                    <div class="upload_img">
+                        <div class="show_ico">
+                            <img id="show_blogs_ico" class="show-blogs" src="/static/images/add.png" alt="博客图标" style="background-color: #d2d2d2;">
+                            <!-- <i id="remove_sites_ico" class="iconfont icon-close-circle remove-ico remove-sites" data-id="" data-type="ico" style="display: none;"></i> -->
+                        </div>
+                        <!-- <input type="file" id="upload_sites_ico" class="upload_blog_img" data-type="ico" accept="image/*" onchange="uploadImg(this)">-->
+                        {{ form.logo(class='form-control upload_blog_img',id='up_img',onchange="changepic(this)")|safe }}
+                    </div>
+                    {% if form.logo.errors %}
+                        <ul class=errors>
+                        {% for error in form.logo.errors %}
+                          <li>{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group-separator" style="margin-top: 15px;"></div>
+                <div class="form-group">
+                    {{render_field(form.name)}}
+                </div>
+                <div class="form-group-separator"></div>
+                <div class="form-group">
+                    {{ render_field(form.url) }}
+                </div>
+                <div class="form-group-separator"></div>
+                <div class="form-group">
+                    {{ render_field(form.email) }}
+                    <div class="tip" style="border: 1px solid red; display:none; padding:5px">
+                        <p class="text-danger">提示：请检查好登录邮箱是否正确再提交博客，只有一次填写机会哦</p>
+                    </div>
+                </div>
+                <div class="form-group-separator"></div>
+                <div class="form-group">
+                    {{ render_field(form.categor) }}
+                </div>   
+                <div class="form-group-separator"></div>                  
+                <button type="submit" class="btn btn-turquoise">提交博客</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block bottomscript %}
+{{ super() }}
+
+<script type="text/javascript">
+    $(function(){
+        $("#email").focus(function(){
+            $(".tip").css("display","block")
+        });
+
+        $("#email").blur(function(){
+            $(".tip").css("display","none")
+        })
+    })
+</script>
+    
+{% endblock bottomscript %}
+

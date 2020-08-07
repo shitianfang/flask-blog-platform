@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    <head>
+        <script async src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" >
+        </script>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8550836177608334",
+            enable_page_level_ads: true
+        });
+        </script>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?c05bb16ea908292af9f6c513087a1cc3";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>{% block title %}MyBlog{% endblock %}</title>
+    
+        {% block link %}
+        <link rel="shortcut icon" href="{{ url_for( 'static', filename='images/favicon.png' ) }}">
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/fonts/linecons/css/linecons.css' ) }}">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/fonts/fontawesome/css/font-awesome.min.css' ) }}">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/bootstrap.css' ) }}">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/xenon-core.css' ) }}">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/xenon-components.css' ) }}">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/xenon-skins.css' ) }}">
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/nav.css' ) }}">
+        
+       
+    
+        <link rel="stylesheet" href="{{ url_for( 'static', filename='css/mystyle.css' ) }}">
+        {% endblock link %}
+    
+        <meta name="keywords" content="{% block keywords %}MyBlog,博客收录,干货文章,个人博客,博客平台,优秀博客,博客大全,开发者,编程,代码,名人博客,生活博客{% endblock keywords %}">
+        <meta name="description" content="{% block description %}MyBlog - 收集国内外知名博客，优秀个人博客，采用高质量博客优先排序规则，记录分享你我{% endblock description %}">
+    
+        {% block style %}
+            
+        {% endblock style %}
+        <!-- <script src="{{ url_for( 'static', filename='js/jquery-1.11.1.min.js' ) }}"></script> -->
+    
+        {% block topscript %}
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ url_for( 'static', filename='js/mine.js' ) }}"></script>
+        <script src="{{ url_for( 'static', filename='js/jquery.cookie.js' ) }}"></script> 
+        {% endblock topscript %}
+    
+        
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+<body class="page-body">
+
+    <div class="page-container">
+        
+        {% block page_container %}
+            
+        {% endblock page_container %}
+        
+    </div>    
+
+        <!-- Bottom Scripts -->
+        <!-- <script src="{{ url_for( 'static', filename='js/dropzone/dropzone.min.js' ) }}"></script> -->
+        <script src="/static/js/bootstrap.min.js"></script>
+        <script src="/static/js/TweenMax.min.js"></script>
+        <script src="/static/js/resizeable.js"></script>
+        <script src="/static/js/joinable.js"></script>
+        <script src="/static/js/xenon-api.js"></script>
+        <script src="/static/js/xenon-toggles.js"></script>
+        <!-- JavaScripts initializations and stuff -->
+        <script src="/static/js/xenon-custom.js"></script>
+        <script src="/static/js/lozad.js"></script>
+        
+        {% block bottomscript %}
+        {% endblock bottomscript %}
+    
+</body>
+
+</html>

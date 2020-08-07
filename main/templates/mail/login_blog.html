@@ -1,0 +1,12 @@
+<p>Dear {{ blog.name }},</p>
+<p>
+    请通过如下链接登录您的账户:
+    <a href="{{ url_for('login_blog', token=token, _external=True) }}">
+        点击这里登录
+    </a>.
+</p>
+<p>您也可以粘贴如下链接到浏览器地址栏进行登录</p>
+<p>{{ url_for('login_blog', token=token, _external=True) }}</p>
+<p>如果您没有登录MyBlog请忽略这条信息</p>
+<p>Sincerely,</p>
+<p>The MyBlog Team</p>

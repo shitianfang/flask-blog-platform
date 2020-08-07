@@ -1,0 +1,83 @@
+{% extends '/backsys/backbase.html' %}
+
+{% block main_content %}
+<div class="sidebar-menu toggle-others fixed">
+    <div class="sidebar-menu-inner">
+        <header class="logo-env">
+            <!-- logo -->
+            <div class="logo">
+                <a href="{{ url_for('backindex') }}" class="logo-expanded">
+                    <!-- <img src="{{ url_for( 'static', filename='images/logo@2x.png' ) }}" alt="" /> -->
+                    <h1 style="color: aliceblue;">XE BLOG</h1>
+                </a>
+                <a href="{{ url_for('backindex') }}" class="logo-collapsed">
+                    <img src="{{ url_for( 'static', filename='images/blogo-collapsed@2x.png' ) }}" width="40" alt="" />
+                </a>
+            </div>
+            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+            <div class="mobile-menu-toggle visible-xs">
+                <a href="#" data-toggle="mobile-menu">
+                    <i class="fa-bars"></i>
+                </a>
+            </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+            <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">博客数据</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">基本信息</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('crawl')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章采集</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('postlist')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章列表</span>
+                    <span class="badge badge-green">2</span>
+                </a>
+            </li>
+            <!-- <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">用户反馈</span>
+                    <span class="badge badge-green">7</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-note"></i>
+                    <span class="title">友情链接</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+<div class="main-content">
+    {% include '/backsys/__nav.html' %}
+    {% include 'backsys/bflash.html' %}
+    <div class="page-error centered">
+        <div class="error-symbol"> <i class="fa-warning"></i> </div>
+        <h2>
+            功能正在开发中
+            <small>Page Being Generated!</small> </h2>
+        <p>We are developing the page you were looking for!</p>
+        <p>You can contact one of our agents to help you!</p>
+    </div>
+</div>
+
+
+{% endblock main_content %}

@@ -1,0 +1,185 @@
+{% extends 'backsys/backbase.html' %}
+
+{% block main_content %}
+<div class="sidebar-menu toggle-others fixed">
+    <div class="sidebar-menu-inner">
+        <header class="logo-env">
+            <!-- logo -->
+            <div class="logo">
+                <a href="{{ url_for('backindex') }}" class="logo-expanded">
+                    <!-- <img src="{{ url_for( 'static', filename='images/logo@2x.png' ) }}" alt="" /> -->
+                    <h1 style="color: aliceblue;">XE BLOG</h1>
+                </a>
+                <a href="{{ url_for('backindex') }}" class="logo-collapsed">
+                    <img src="{{ url_for( 'static', filename='images/blogo-collapsed@2x.png' ) }}" width="40" alt="" />
+                </a>
+            </div>
+            <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+            <div class="mobile-menu-toggle visible-xs">
+                <a href="#" data-toggle="mobile-menu">
+                    <i class="fa-bars"></i>
+                </a>
+            </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+            <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">博客数据</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('developing')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">基本信息</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="{{url_for('crawl')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章采集</span>
+                </a>
+            </li>
+            <li class="has-sub active">
+                <a href="{{url_for('postlist')}}">
+                    <i class="linecons-cog"></i>
+                    <span class="title">文章列表</span>
+                    <span class="badge badge-green">2</span>
+                </a>
+            </li>
+            <!-- <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-desktop"></i>
+                    <span class="title">用户反馈</span>
+                    <span class="badge badge-green">7</span>
+                </a>
+            </li>
+            <li class="has-sub">
+                <a href="#.html">
+                    <i class="linecons-note"></i>
+                    <span class="title">友情链接</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+
+<div class="main-content">
+    {% include '/backsys/__nav.html' %}
+    <div class="page-title">
+        <div class="title-env">
+            <h1 class="title">文章列表</h1>
+            <p class="description">获取到的所有博客文章</p>
+        </div>
+    </div>
+    {% include 'backsys/bflash.html' %}
+
+
+    {% if task %}
+    <div class="alert alert-default" role="alert">
+        <div class="progress">
+            
+            {% if task.info %}
+                {% set total = task.info.get('total',1) %}
+            {% else %}
+                {% set total = 1 %}
+            {% endif %}
+            
+            
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0"
+                aria-valuemax="100" style="width: {{total}}%"> <span class="sr-only">{{total}}% Complete (success)</span> </div>
+        </div>
+        正在获取文章数据
+        <span id="{{ task.id }}-progress">---当前处于队列第0个位置，进度：{{total}}%，状态：{{task.state}}</span>
+    </div>   
+    {% endif %}
+     
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">文章列表</h3>
+                <div class="panel-options">
+                    <a href="#">
+                        <i class="linecons-cog"></i>
+                    </a>
+                    <a href="#" data-toggle="panel">
+                        <span class="collapse-icon">–</span>
+                        <span class="expand-icon">+</span>
+                    </a>
+                    <a href="#" data-toggle="reload">
+                        <i class="fa-rotate-right"></i>
+                    </a>
+                    <a href="#" data-toggle="remove">
+                        ×
+                    </a>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>标题</th>
+                        <th>摘要</th>
+                        <th>链接</th>
+                        <th>作者</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        {% for post in posts %}
+                        {% set id = loop.index %}
+                        {% include 'backsys/__post.html' %}
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            {#<div class="row clear_float">
+                <div class="col-sm-12 text-right text-center-sm">
+                    <ul class="pagination pagination-sm no-margin">
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#">4</a>
+                        </li>
+                        <li>
+                            <a href="#">5</a>
+                        </li>
+                        <li>
+                            <a href="#">6</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>#}
+        </div>
+    </div>
+    <!-- Main Footer -->
+    <!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+    <!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+    <!-- Or class "fixed" to  always fix the footer to the end of page -->
+
+</div>
+{% endblock main_content %}

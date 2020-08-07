@@ -1,0 +1,39 @@
+{% extends 'underbase.html' %}
+
+{% block title %}MyBlog - {{ title }}{% endblock %}
+
+{#
+    {% block keywords %}{{ blog.name }},MyBlog,{{ blog.keyword }},博客收录,干货文章,个人博客,博客平台,优秀博客,博客大全,开发者,编程,代码,名人博客,生活博客{% endblock keywords %}
+
+{% block description %}
+{% if blog.about %}
+MyBlog - {{ blog.name }} - {{ blog.about }}    
+{% else %}
+MyBlog - {{ blog.name }} - 收集国内外知名博客，优秀个人博客，采用高质量博客优先排序规则，记录分享你我   
+{% endif %}
+{% endblock description %}
+    #}
+
+{% block style %}
+<style type="text/css">
+    html{
+        overflow-y: hidden;    
+    }
+ </style>            
+{% endblock style %}
+
+{% block page_container %}
+    
+    {% set collapsed = True %}
+    {% include '__sidebar.html' %}
+
+    {% block content %}
+    <iframe class="blog_iframe" src="{{ url }}" frameborder="0" style="width: 100%; height:100%;"></iframe>
+    {% endblock content %}
+
+{% endblock page_container %}
+
+
+
+
+

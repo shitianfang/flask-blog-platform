@@ -1,0 +1,139 @@
+{#
+    {% block bottomscript %}
+{{ super() }}
+<script src="/static/js/lazyload.js"></script>
+<script type="text/html" id="mould">
+    {% set mouldpost = True %}
+    {% include '/sub/post_card.html' %}
+</script>
+<script>
+
+    var ajaxlock = false;
+
+
+
+    $(function () {
+
+        //Call DataLazyLoad
+        $(".looklist").DataLazyLoad({
+            load: function (page, unLocked) {
+                console.log(ajaxlock);
+                if (ajaxlock == true) {
+                    return;
+                }
+
+                var html = '';
+                var max = 50;
+                var page= page;
+
+
+                //get data
+                var mould = $("#mould").html();
+
+                
+
+                //$.ajaxSettings.async = false;
+                
+
+                $.getJSON("{{ url_for('get_look_post') }}", { page: page }, function (result) {
+                    ajaxlock = true;
+                    console.log("已锁定");
+
+                    if (result.length == 0) {
+                        page = 0
+                    } else {
+                        page += 1
+                    }
+
+                    $.each(result, function (i, dict) {
+                        html += mould.replace("[[title]]", dict["title"]).replace("[[digest]]", dict["body"]).replace("[[author]]", dict["author"]).replace("[[about]]", dict["about"])
+                    });
+                    $(html).appendTo('.looklist');
+                    ajaxlock = false
+                    console.log("已解锁");
+
+                    //defer.resolve(result);
+
+                }).error(function () {
+                    $("<h3>获取内容出错<h3>").appendTo('.looklist');
+                    page = 0;
+                    
+                });
+
+               /* var defer = $.Deferred();
+                var _ajax = function () {
+                    
+
+                    return defer.promise();
+                }*/
+
+                /*$.when(_ajax()).done(function () {
+
+                });*/
+
+                //console.log(page)
+
+                //Check whether to end
+                //page = page >= max ? 0 : page + 1;
+                //To prevent repeated load, The first parameter to the next page, No page is 0
+                unLocked(page);
+                if (page == 0) {
+                    $("<h3>已经到底啦<h3>").appendTo('.looklist');
+                }
+            }
+        });
+    });
+
+</script>
+<script>
+    $(function () {
+        var pos = $('.about_panel').offset();// offset() 获得div1当前的位置，左上角坐标(x,y)
+        $(window).scroll(function () { //滚动条滚动事件
+            if ($(this).scrollTop() > pos.top) {
+                $('.about_panel').css('top', $(this).scrollTop() - pos.top);
+            }
+            else if ($(this).scrollTop() <= pos.top) {
+                $('.about_panel').css('top', 0).css('position', 'relative');
+            }
+
+            //console.log("执行")
+            $.each($(".mypanel"), function (i, thep) {
+                //console.log("执行中");
+                var top_window = $(thep).offset().top - $(window).scrollTop()
+                if (top_window > 0 && top_window <= 100) {
+                    $(".main_about").html($(thep).find(".about_author").html());
+                    //console.log("内部执行");
+                    return false;
+                }
+            });
+            //console.log("执行完成")
+
+
+        });
+
+    })
+</script>
+
+{% endblock bottomscript %}#}
+
+
+
+
+
+
+
+
+
+
+{#<div class="col-sm-3 about_col">
+            <div class="panel panel-color panel-gray about_panel">
+                <div class="panel-heading fff_color">
+                    <h2 class="panel-title" style="color: black;">关于作者：<a href="#">{{posts[0].blog.name}}</a></h2>
+                </div>
+                <div class="panel-body no-pdl">
+                    {% set display = True %}
+                    {% set about = posts[0].blog.about %}
+                    {% include '/sub/about_author_card.html' %}
+                </div>
+            </div>
+        </div>#}

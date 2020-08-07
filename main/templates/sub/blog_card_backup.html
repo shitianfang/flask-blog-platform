@@ -1,0 +1,20 @@
+{% set open_blog = url_for('seeblog' ,blog_id=blog.id) %}
+<div class="xe-widget xe-conversations box2 label-info" onclick="window.open('{{ open_blog }}', '_self')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{ blog.about }}">
+    <div class="xe-comment-entry">
+        <a class="xe-user-img">
+            {% if blog.logo %}
+            <img data-src="{{ url_for('get_logo',filename=blog.logo) }}" class="lozad img-circle" width="40"> 
+            {% else %}
+            <img src="{{ avatars.default() }}" class="lozad img-circle" width="40">    
+            {% endif %}
+            
+        </a>
+        <div class="xe-comment">
+            <a href="#" class="xe-user-name overflowClip_1">
+                <strong>{{ blog.name }}</strong>
+            </a>
+            {# 注意这里需要将多出部分裁剪 #}
+            <p class="overflowClip_2">{{ blog.about }}</p>
+        </div>
+    </div>
+</div>

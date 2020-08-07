@@ -1,0 +1,81 @@
+<nav class="navbar user-info-navbar topnav" role="navigation">
+    <!-- User Info, Notifications and Menu Bar -->
+    <!-- Left links for user info navbar -->
+    <ul class="user-info-menu left-links list-inline list-unstyled">
+        <li class="hidden-sm hidden-xs">
+            <a href="#" data-toggle="sidebar">
+                <i class="fa-bars"></i>
+            </a>
+        </li>
+        {# <li class="dropdown hover-line language-switcher">
+            <a href="../cn/index.html" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="/static/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+            </a>
+            <ul class="dropdown-menu languages">
+                <li>
+                    <a href="../en/index.html">
+                        <img src="/static/images/flags/flag-us.png" alt="flag-us" /> English
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="../cn/index.html">
+                        <img src="/static/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+                    </a>
+                </li>
+            </ul>
+        </li> #}
+    </ul>
+    <ul class="user-info-menu right-links list-inline list-unstyled">
+        {% if current_user.is_anonymous %}
+            <li class="hidden-sm hidden-xs">
+                <a href="{{ url_for('upload_blog') }}">
+                    <i class="fa fa-eject"></i>
+                    提交博客
+                </a>
+            </li>
+        {% else %}
+        <li class="dropdown user-profile">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% if current_user.logo %}
+                <img src="{{ url_for('get_logo',filename=current_user.logo) }}" alt="user-image"
+                    class="img-circle img-inline userpic-32" width="28" />
+                {% else %}
+                <img src="{{ avatars.default() }}" alt="user-image"
+                    class="img-circle img-inline userpic-32" width="28" />
+                {% endif %}
+                
+                <span>
+                    {{current_user.name}}
+                    <i class="fa-angle-down"></i>
+                </span>
+            </a>
+            <ul class="dropdown-menu user-profile-menu list-unstyled">
+                <li>
+                    
+                    <a href="{{url_for('seeblog',blog_id=current_user.id)}}">
+                        <i class="fa-home"></i> 主页
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('postlist')}}">
+                        <i class="fa-newspaper-o"></i> 文章
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url_for('backindex')}}">
+                        <i class="fa-gear"></i> 后台
+                    </a>
+                </li>
+                <li class="last"> {# #}
+                    <a href="{{url_for('logout')}}">
+                        <i class="fa-lock"></i> 登出  
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {% endif %}
+
+    </ul>
+
+
+</nav>

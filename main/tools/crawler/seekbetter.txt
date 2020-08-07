@@ -1,0 +1,144 @@
+名称：五分钟学算法
+描述：致力于将算法讲清楚！
+标签：算法 原创 程序员 编程 有趣
+链接：https://www.cxyxiaowu.com
+
+
+名称：格物致知
+描述：Python / Go / MongoDB / Prometheus / CentOS / Docker / Kubernetes / 后端 / GTD
+标签：后端 Go docker Prometheus kubernetes
+链接：https://liqiang.io
+
+
+名称：阮一峰的网络日志
+描述：
+标签：编程 科技 分享 教程
+链接：http://www.ruanyifeng.com/home.html
+
+
+名称：Freek Dev
+描述：
+标签：PHP Laravel Javascript
+链接：https://freek.dev/
+
+
+名称：蓝卡
+描述：美好科技生活方式
+标签：科技 数码 软件 互联网 博客
+链接：https://www.lanka.cn/
+
+
+名称：IOIOX
+描述：基本专注群晖技巧教程
+标签：群晖 NAS
+链接：https://www.ioiox.com
+
+
+名称：小财神的奋斗
+描述：分享财务思维，普及管理会计知识，帮助财务人员成长！
+标签：财务 管理 会计 职场 生活
+链接：https://caisixiang.com
+
+
+名称：SKYue
+描述：和时间做朋友
+标签：生活 互联网 电影
+链接：https://www.skyue.com
+
+
+名称：69伙伴
+描述：技术是冷冰冰的，应该多看看世界
+标签：技巧 技术 随想
+链接：https://covermusic.cn
+
+
+名称：张鑫旭
+描述：鑫空间，鑫生活
+标签：CSS JS 前端
+链接：https://www.zhangxinxu.com/
+
+
+名称：Yiran's Blog
+描述：Normal is boring
+标签：linux kubernetes 运维
+链接：https://zdyxry.github.io/
+
+
+名称：林小沐
+描述：
+标签：编程 随笔
+链接：https://immmmm.com/
+
+
+名称：渚碧
+描述：我欲种菜，亦植蔷薇
+标签：生活 读书
+链接：https://jubeny.com
+
+
+名称：见字如面
+描述：别再烦我，你别说话
+标签：产品 生活 思考
+链接：https://hiwannz.com
+
+
+名称：Debug客栈
+描述：做一个爱分享的程序猿
+标签：PHP Laravel 编程 Algorithm 分享
+链接：https://www.debuginn.cn
+
+
+名称：掘墓人的小铲子
+描述：记录生活，分享技术
+标签：微信支付
+链接：https://juemuren4449.com/
+
+
+名称：DIYGod
+描述：写代码是热爱，写到世界充满爱!
+标签：编程 二次元 技术
+链接：https://diygod.me/
+
+
+名称：Lenix Blog
+描述：记录－交流－Web开发知识分享
+标签：PHP 前端 编程 技术 后端
+链接：https://blog.p2hp.com/
+
+
+名称：云风的 BLOG
+描述：思绪来得快去得也快，偶尔会在这里停留
+标签：技术 读书 编程
+链接：https://blog.codingnow.com/
+
+
+名称：Jason
+描述：独立开发者，自由职业者
+标签：编程 独立开发者
+链接：https://atjason.com/
+
+
+名称：ZEEKLING
+描述：Stay simple, stay naive.
+标签：技术 生活
+链接：https://www.zeekling.cn/
+
+
+名称：咕咚的个人博客
+描述：求真求知，拥抱体系
+标签：Android 日记 思考
+链接：https://gudong.site
+
+
+名称：石阶求上
+描述：记录Linux运维工作和开发工作过程中的技术知识，整理生活的足迹，为了走的更远，走的更稳。
+标签：系统运维 linux
+链接：https://cn-blogs.cn/
+
+
+名称：土木坛子
+描述：和光同尘，与时舒卷
+标签：生活 感悟 经历
+链接：https://tumutanzi.com/
+
+

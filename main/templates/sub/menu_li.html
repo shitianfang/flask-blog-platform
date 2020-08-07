@@ -1,0 +1,9 @@
+<li data-toggle="tooltip_menu" data-placement="right" title="{{ item.name }}">
+    <a href="{{ url_for('index',_external=True)+'#'+item.name }}" class="smooth">
+        <i class="{{ item.icon }}"></i>
+        <span class="title">{{ item.name }}</span>
+        {% if item.hot %}
+        <span class="label label-pink pull-right hidden-collapsed">Hot</span>
+        {% endif %}
+    </a>
+</li>

@@ -1,0 +1,92 @@
+{% extends 'underbase.html' %}
+
+
+{% block page_container %}
+
+{% include '__sidebar.html' %}
+
+<div class="main-content {% block color %}{% endblock  %}">
+    
+    {% include '__topnav.html' %}
+    
+    {% for c,message in get_flashed_messages(with_categories=true) %}
+        {% if c =="success" %}
+        <div class="alert alert-success">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+        
+        {% if c =="notice" %}
+        <div class="alert alert-info">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+
+        {% if c =="error" %}
+        <div class="alert alert-danger">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+
+        {% if c =="message" %}
+        <div class="alert alert-info">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span> <span class="sr-only">关闭</span></button>
+        </div>
+        {% endif %}
+        
+    {% endfor %}
+
+    {% block content %}
+    无内容    
+    {% endblock content %}
+    
+    
+    {% block footer %}
+    <footer class="main-footer sticky footer-type-1">
+        <div class="footer-inner">
+            <!-- Add your copyright text here -->
+            <div class="footer-text">
+                &copy; 2020
+                <a href="{{url_for('about')}}"><strong>MyBlog团队</strong></a>
+                <!--  - Purchase for only <strong>23$</strong> -->
+            </div>
+            <!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
+            <div class="go-up">
+                <a href="#" rel="go-top">
+                    <i class="fa-angle-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    {% endblock footer %}
+    
+</div>
+
+{% endblock page_container %}
+
+
+{% block bottomscript %}
+<script>
+    $(".user-profile").click(function(){
+        if ($(this).hasClass("open")){
+            $(this).removeClass("open")
+            $(this).find(".dropdown-toggle").attr('aria-expanded','false')
+        }else{
+            $(this).addClass("open")
+            $(this).find(".dropdown-toggle").attr('aria-expanded','true')
+        }
+    })
+</script>
+<script src="https://themes.laborator.co/xenon/assets/js/xenon-widgets.js" id="script-resource-7"></script>
+{% endblock bottomscript %}
+
+
+{# <!--END UED团队 -->
+<!-- Main Footer -->
+<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
+<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
+<!-- Or class "fixed" to  always fix the footer to the end of page --> #}

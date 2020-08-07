@@ -1,0 +1,76 @@
+<div class="sidebar-menu toggle-others fixed {% if g.menu_close=='T' %}collapsed{% endif %}">
+    <div class="sidebar-menu-inner">
+        <header class="logo-env">
+            <!-- logo -->
+            <div class="logo">
+                <a href="{{ url_for('index') }}" class="logo-expanded">
+                    <img src="/static/images/logo@2x.png" width="100%" alt="" />
+                </a>
+                <a href="{{ url_for('index') }}" class="logo-collapsed">
+                    <img src="/static/images/logo-collapsed@2x.png" width="40" alt="" />
+                </a>
+            </div>
+            <div class="mobile-menu-toggle visible-xs">
+                <a href="#" data-toggle="user-info-menu">
+                    <i class="linecons-cog"></i>
+                </a>
+                <a href="#" data-toggle="mobile-menu">
+                    <i class="fa-bars"></i>
+                </a>
+            </div>
+        </header>
+        <ul id="main-menu" class="main-menu">
+            {# 注意修改图标 #}
+
+            <li data-toggle="tooltip_menu" data-placement="right" title="推荐文章">
+                <a href="{{ url_for('lookaround',mode='recommend',categid=0) }}">
+                    <i class="fa-file-text-o"></i>
+                    <span class="title">推荐文章</span>
+                </a>
+            </li>
+
+            <li data-toggle="tooltip_menu" data-placement="right" title="最新文章">
+                <a href="{{ url_for('lookaround',mode='new',categid=0) }}">
+                    <i class="fa-file-text-o"></i>
+                    <span class="title">最新文章</span>
+                </a>
+            </li>
+
+            <li data-toggle="tooltip_menu" data-placement="right" title="随机文章">
+                <a href="{{ url_for('lookaround',mode='random',categid=0) }}">
+                    <i class="fa-file-text-o"></i>
+                    <span class="title">随机文章</span>
+                </a>
+            </li>
+
+            <div class="my_interval">
+            </div>
+
+            {% for item in g.categors %}
+            {% include '/sub/menu_li.html' %}
+            {% endfor %}
+
+            <li class="nav_foot" style="bottom: 100px;" title="提交博客">
+                <a href="{{ url_for('upload_blog') }}">
+                    <i class="linecons-paper-plane"></i>
+                    <span class="tooltip-blue">提交博客</span>
+                </a>
+            </li>
+
+            <li class="nav_foot" style="bottom: 50px;" title="加入群聊">
+                <a href="//shang.qq.com/wpa/qunwpa?idkey=d042f2ff03a6959f8618cc0b1c055808e82cedfea6ba66ced59510888bb4d32a">
+                    <i class="fa-qq"></i>
+                    <span class="tooltip-blue">加入群聊</span>
+                </a>
+            </li>
+
+            <li class="nav_foot" title="关于本站">
+                <a href="{{ url_for('about') }}">
+                    <i class="linecons-heart"></i>
+                    <span class="tooltip-blue">关于本站</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MyBlog
+{% endblock title %}
+
+{% block content %}
+<!-- <div class="row">
+    <div class="col-sm-4">
+        
+    </div>
+</div> -->
+
+
+{% for categor in categors %}
+<h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="{{ categor.name }}"></i>{{ categor.name }}
+</h4>
+
+{% set n = categor.blogs.limit(pre_cate_limit).count() %}
+{% set j = pre_row_limit %}
+{% set col_width = 12/j %}
+
+{# 将列表分成n/j份，每份j个 #}
+{% for i in range(0,n,j) %}
+<div class="row">
+
+    {% for blog in categor.blogs.slice(i,i+j).all() %}
+    <div class="col-sm-{{ col_width | int }}">
+
+        {% include '/sub/blog_card.html' %}
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endfor %}
+<br>
+{% endfor %}
+
+{% endblock content %}
+
+
+
+{% block bottomscript %}
+{{ super() }}
+{% set index = True %}
+{% include '__smooth.js.html' %}
+<script src="/static/js/my_card.js"></script>
+{% endblock bottomscript %}

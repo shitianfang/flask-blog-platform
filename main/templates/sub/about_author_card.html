@@ -1,0 +1,34 @@
+{% if display %}
+{% set main_about = "main_about" %}
+{% endif %}
+
+
+<div class="about_author {{ main_about }}" {% if not display %}style="display:none"{% endif %}>
+{% if about %}
+{{ about }}
+{% else %}
+作者什么都没写
+{% endif %}
+</div>
+
+
+{#
+        如果你对我的文章感兴趣，那么<strong>很可能你也对我平时的阅读感兴趣</strong>，以下是一些你可以参考或订阅的资源：
+    <ol>
+    <li><a href="http://www.douban.com/people/pongba/">我在豆瓣</a>上的豆列列举了一些看过的好书：<a href="http://www.douban.com/doulist/46003/">[只读经典]思维改变生活</a> | <a href="http://www.douban.com/doulist/127649/">[只读经典]思考的技术与艺术</a> | <a href="http://www.douban.com/doulist/197706/">决策与判断</a> | <a href="http://www.douban.com/doulist/176513/">机器学习与人工智能书籍资源导引</a> </li>
+    </ol>
+    我翻译的书：
+    <ol>
+    <li><a href="http://book.douban.com/subject/1470838/">《Imperfect C++ 中文版》</a></li>
+    <li><a href="http://book.douban.com/subject/1470842/">《Exceptional C++ Style 中文版》</a></li>
+    <li><a href="http://book.douban.com/subject/2248759/">《修改代码的艺术》</a></li>
+    </ol>
+    我写的书：
+    <ol>
+    <li><a href="http://book.douban.com/subject/6709809/"><img src="https://img3.doubanio.com/mpic/s6586365.jpg"></a></li>
+    </ol>
+    我的公号：
+    <ol>
+    <li><img src="http://mindhacks.cn/wp-content/uploads/2016/12/card1.png"></li>
+    </ol>
+    #}

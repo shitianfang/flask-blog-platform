@@ -1,0 +1,9 @@
+Dear {{ blog.name }},
+
+您的文章已更新完成，请通过如下链接查看:
+
+{{ url_for('postlist', _external=True) }}
+
+Sincerely,
+
+The Myblog Team

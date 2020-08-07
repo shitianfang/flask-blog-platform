@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MyBlog - {{title}}
+{% endblock title %}
+
+{% block style %}
+<style type="text/css">
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="row">
+
+    <div class="col-sm-6 col-sm-offset-3">
+        <div class="page-title no-mgb">
+            <div class="title-env">
+                <h1 class="title myh1">{{title}}</h1>
+            </div>
+            <div class="breadcrumb-env">
+                <ol class="breadcrumb bc-1">
+                    <li class="{% if mode=='recommend' %}active{% else %}ms-hover{% endif %}"> <a
+                            href="{{url_for('lookaround',categid=0,mode='recommend')}}">推荐</a> </li>
+                    <li class="{% if mode=='new' %}active{% else %}ms-hover{% endif %}"> <a
+                            href="{{url_for('lookaround',categid=0,mode='new')}}">最新</a> </li>
+                    <li class="{% if mode=='random' %}active{% else %}ms-hover{% endif %}"> <a
+                            href="{{url_for('lookaround',categid=0,mode='random')}}">随机</a> </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 no-pd col-sm-offset-3">
+        <div class="col-sm-12 no-pd post_col mr-2">
+
+            <div class="my_option">
+                <div class="row">
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==0 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=0)}}">全部文章</a>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==1 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=1)}}">知名博客</a>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==2 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=2)}}">编程-科技</a>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==3 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=3)}}">学习-思考</a>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==4 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=4)}}">生活-记录</a>
+                    </div>
+                    <div class="col-sm-2 text-center">
+                        <a class="btn btn-white my-cbtn {% if active==5 %}active{% endif %}"
+                            href="{{url_for('lookaround',mode=mode,categid=5)}}">创业-产品</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 no-pd looklist">
+                {% for post in posts %}
+                {% include '/sub/post_card.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+
+            <ul class="pagination">
+                {% if pagination.has_prev %}
+                <li><a href="{{ url_for('lookaround',mode=mode,categid=active) }}?page={{ pagination.prev_num }}"><i class="fa-angle-left"></i></a></li>
+                {% else %}    
+                <li class="disabled"><a href="#"><i class="fa-angle-left"></i></a></li>
+                {% endif %}
+                
+                {% for i in pagination.iter_pages() %}
+    
+                    {% if i %}
+    
+                        {% if i != pagination.page %}
+                            <li><a href="{{ url_for('lookaround',mode=mode,categid=active) }}?page={{ i }}">{{i}}</a></li>   
+                        {% else %}
+                            <li class="active"><a href="{{ url_for('lookaround',mode=mode,categid=active) }}?page={{ i }}">{{i}}</a></li>
+                        {% endif %}
+                        
+                    {% endif %}
+    
+                     
+                {% endfor %}
+    
+                {% if pagination.has_next %}
+                <li><a href="{{ url_for('lookaround',mode=mode,categid=active) }}?page={{ pagination.next_num }}"><i class="fa-angle-right"></i></a></li>    
+                {% else %}
+                <li class="disabled"><a href="#"><i class="fa-angle-right"></i></a></li>   
+                {% endif %}
+                
+            </ul>
+    
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

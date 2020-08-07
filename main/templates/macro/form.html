@@ -1,0 +1,33 @@
+{% macro render_field(field) %}
+<dt>{{ field.label(class='control-label') }}</dt>
+<dd>
+  {{ field(class='form-control',**kwargs)|safe }}
+
+  {% if field.errors %}
+  <ul class="errors">
+    {% for error in field.errors %}
+    <li><p class="text-danger">{{ error }}</p></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</dd>
+{% endmacro %}
+
+
+{% macro render_back_field(field,place) %}
+<div class="form-group clear_float"> 
+  {{field.label(class="col-sm-3 control-label")}}
+  <div class="col-sm-9">
+  {{field(class="form-control",placeholder=place)}}
+  </div>
+
+  {% if field.errors %}
+  <ul class="errors">
+    {% for error in field.errors %}
+    <li><p class="text-danger">{{ error }}</p></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+<div class="form-group-separator"></div>
+{% endmacro %}

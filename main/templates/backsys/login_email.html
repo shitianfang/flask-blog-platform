@@ -1,0 +1,41 @@
+{% extends '/backsys/backbase.html' %}
+
+{% block bodyclass %}lockscreen-page{% endblock bodyclass %}
+
+{% block page %}
+<div class="login-container">
+    <div class="row">
+        <div class="col-sm-7">
+            
+            <form role="form" method="post" id="lockscreen" class="lockcreen-form fade-in-effect in" enctype="multipart/form-data">
+
+                {{ form.csrf_token }}
+
+                <div class="user-thumb"> <a href="#"> <img
+                            src="{{url_for('static',filename='images/user-5.png')}}" class="img-responsive img-circle">
+                    </a> </div>
+                <div class="form-group">
+                    <h3>Welcome, Blogger!</h3>
+                    <p>输入您的邮箱获取登录令牌进入管理后台</p>
+                    <div class="input-group"> 
+                        {{form.email(class='form-control input-dark',placeholder="Email Adress")}}
+                        <!-- <input type="password" class="form-control input-dark" name="passwd"
+                            id="passwd" placeholder="Password">  -->
+                            <span class="input-group-btn"> <button type="submit"
+                                class="btn btn-primary">登入</button> </span> 
+                            </div>
+                            {% if form.email.errors %}
+                            
+                              {% for error in form.email.errors %}
+                              <p style="color: red;" class="text-danger">{{ error }}</p>
+                              {% endfor %}
+                            
+                            {% endif %}         
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock page %}

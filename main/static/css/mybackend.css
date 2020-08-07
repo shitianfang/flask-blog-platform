@@ -1,0 +1,44 @@
+
+
+.mynav:after{
+    content: '';
+}
+
+.main-content{
+    background-color: rgb(167, 164, 164);
+}
+
+.clear_float{
+    overflow: hidden;
+}
+
+.mybtn{
+    width: 50%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    bottom: 15px;
+    position: absolute;
+}
+
+.no-pd{
+    padding: 0;
+}
+
+
+.panel-body p{
+    color: rgb(59, 58, 58);
+    font-size: 15px;
+}
+
+a{
+    color: rgb(11, 161, 11);
+}
+
+a:hover{
+    color: rgb(38, 226, 38);
+}
+
+.my_cp{
+    height: 647px;
+}
+
