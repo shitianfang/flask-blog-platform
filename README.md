@@ -16,6 +16,7 @@ supervisord -c /目录/supervisord.conf
 
 #有问题可以加QQ群交流：1126037372
 
+感谢Viggo前端 https://github.com/WebStackPage/WebStackPage.github.io
 
 # 效果
 ![](https://github.com/shitianfang/flask-blog-platform/blob/master/a.png)
